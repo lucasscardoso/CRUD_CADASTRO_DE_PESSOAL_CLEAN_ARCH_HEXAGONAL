@@ -4,7 +4,7 @@ import com.hexagonal.ArquiteturaHexagonal.core.user.model.IUser;
 import jakarta.persistence.*;
 
 
-public class User implements IUser {
+public class User {
 
     private Long id;
     private String nome;
@@ -14,53 +14,44 @@ public class User implements IUser {
 
     public User(){}
 
-    @Override
     public Long getId() {
-        return 0L;
+        return id;
     }
 
-    @Override
     public void setId(Long id) {
-
+        this.id = id;
     }
 
-    @Override
     public String getNome() {
-        return "";
+        return nome;
     }
 
-    @Override
     public void setNome(String nome) {
-
+        this.nome = nome;
     }
 
-    @Override
     public String getCpf() {
-        return "";
+        return cpf;
     }
 
-    @Override
     public void setCpf(String cpf) {
-
+        this.cpf = cpf;
     }
 
-    @Override
     public String getEmail() {
-        return "";
+        return email;
     }
 
-    @Override
     public void setEmail(String email) {
-
+        this.email = email;
     }
 
-    @Override
+
     public String getSenha() {
-        return "";
+        return senha;
     }
 
-    @Override
     public void setSenha(String senha) {
-
+        this.senha = senha;
     }
 }

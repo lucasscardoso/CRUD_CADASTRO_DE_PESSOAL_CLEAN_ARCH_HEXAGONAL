@@ -8,26 +8,31 @@ import com.hexagonal.ArquiteturaHexagonal.core.user.repository.UserRepository;
 import org.springframework.stereotype.Service;
 
 @Service
-public class createUser implements IUserCase<CreateUserDto, User> {
+public class CreateUser implements IUserCase<CreateUserDto, User> {
 
 
     private final UserRepository repo;
     private final PasswordEncoder encode;
 
-    public createUser(UserRepository repo,PasswordEncoder encode){
+    public CreateUser(UserRepository repo, PasswordEncoder encode){
         this.repo = repo;
         this.encode = encode;
     }
 
     @Override
-    public User executar(CreateUserDto usuario) {
-        User novoUser = new User();
-        novoUser.setNome(usuario.getNome());
-        novoUser.setEmail(usuario.getEmail());
-        novoUser.setCpf(usuario.getCpf());
-        novoUser.setSenha(usuario.getSenha());
+    public User executar(CreateUserDto dto) {
 
-        String cryptoPassword = encode.encode(usuario.getSenha());
+        BuscaUser existeUser = new BuscaUser(repo);
+
+        User novoUser = new User();
+        novoUser.setNome(dto.getNome());
+
+        novoUser.setEmail(dto.getEmail());
+        existeUser.executar(dto.getEmail());
+        novoUser.setCpf(dto.getCpf());
+        novoUser.setSenha(dto.getSenha());
+
+        String cryptoPassword = encode.encode(dto.getSenha());
         novoUser.setSenha(cryptoPassword);
 
         return repo.salvar(novoUser);
