@@ -12,16 +12,16 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/usuarios")
 public class BuscarUserController {
 
-    private final IUserCase<String, BuscaUserDto> buscaUserService;
+    private final IUserCase<Long, BuscaUserDto> buscaUserService;
 
-    public BuscarUserController(IUserCase<String, BuscaUserDto> createUserService) {
-        this.buscaUserService = createUserService;
+    public BuscarUserController(IUserCase<Long, BuscaUserDto> buscaUserService) {
+        this.buscaUserService = buscaUserService;
     }
 
-    @GetMapping("/buscar")
-    public ResponseEntity<BuscaUserDto> createUser(@RequestParam String email){
+    @GetMapping("/buscar/{id}")
+    public ResponseEntity<BuscaUserDto> buscarUser(@PathVariable Long id){
 
-        BuscaUserDto userFindDto =  buscaUserService.executar(email);
+        BuscaUserDto userFindDto =  buscaUserService.executar(id);
         return ResponseEntity.ok(userFindDto);
     }
 }

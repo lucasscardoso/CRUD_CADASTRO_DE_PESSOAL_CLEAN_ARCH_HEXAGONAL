@@ -20,6 +20,8 @@ public class SecurityConfig {
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers(HttpMethod.POST, "/usuarios/criar").permitAll()
                         .requestMatchers(HttpMethod.GET, "/usuarios/buscar").permitAll()
+                        .requestMatchers(HttpMethod.GET, "/usuarios/buscar/**").permitAll()
+                        .requestMatchers(HttpMethod.DELETE, "/usuarios/deletar/**").permitAll()
                         .anyRequest().authenticated() // Bloqueia o resto (segurança)
                 )
                 .build();

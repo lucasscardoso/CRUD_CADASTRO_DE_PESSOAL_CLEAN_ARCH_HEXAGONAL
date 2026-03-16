@@ -9,4 +9,9 @@ public interface SpringDataUserRepository extends JpaRepository<UserEntity,Long>
 
         Optional<UserEntity> findByEmail(String email);
 
+        Optional<UserEntity> findById(Long id);
+
+        void deleteById(Long id);
+
+    ;
 }

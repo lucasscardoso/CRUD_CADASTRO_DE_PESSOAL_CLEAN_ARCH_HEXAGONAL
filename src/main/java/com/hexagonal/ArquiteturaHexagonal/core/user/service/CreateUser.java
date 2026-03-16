@@ -22,13 +22,11 @@ public class CreateUser implements IUserCase<CreateUserDto, User> {
     @Override
     public User executar(CreateUserDto dto) {
 
-        BuscaUser existeUser = new BuscaUser(repo);
-
         User novoUser = new User();
         novoUser.setNome(dto.getNome());
 
         novoUser.setEmail(dto.getEmail());
-        existeUser.executar(dto.getEmail());
+
         novoUser.setCpf(dto.getCpf());
         novoUser.setSenha(dto.getSenha());
 

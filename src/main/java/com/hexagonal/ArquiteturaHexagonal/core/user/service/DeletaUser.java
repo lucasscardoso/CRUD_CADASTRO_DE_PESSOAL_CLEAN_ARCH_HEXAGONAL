@@ -8,23 +8,19 @@ import com.hexagonal.ArquiteturaHexagonal.core.user.repository.UserRepository;
 import org.springframework.stereotype.Service;
 
 @Service
-public class BuscaUser implements IUserCase<Long, BuscaUserDto> {
+public class DeletaUser implements IUserCase<Long, String> {
 
     private final UserRepository repo;
-    public BuscaUser(UserRepository repo){
+    public DeletaUser(UserRepository repo){
         this.repo = repo;
     }
 
     @Override
-    public BuscaUserDto executar(Long id) {
-        User usuario =  repo.buscar(id).
-                orElseThrow(() -> new UserNotFoundException(String.format("O email: %s " + ", não localizado em nossa base de dados",id)));
+    public String executar(Long id) {
+        User usuario = repo.buscar(id).
+                orElseThrow(() -> new UserNotFoundException("O id: " +  id + ", não localizado em nossa base de dados"));
 
-        BuscaUserDto dto = new BuscaUserDto();
-        dto.setNome(usuario.getNome());
-        dto.setEmail(usuario.getEmail());
-        dto.setCpf(usuario.getCpf());
-
-        return dto;
+        repo.deletar(usuario.getId());
+        return "O Usuario:  " + usuario.getNome() + " com id: " + id + ", foi deletado com sucesso!";
     }
 }

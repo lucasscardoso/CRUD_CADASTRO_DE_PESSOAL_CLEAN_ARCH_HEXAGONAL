@@ -31,7 +31,14 @@ public class UserDbAdapter implements UserRepository {
     }
 
     @Override
-    public Optional<User> buscar(String email) {
-        return jpaRepo.findByEmail(email).map(UserEntity::toDomain);
+    public Optional<User> buscar(Long id) {
+        return jpaRepo.findById(id).map(UserEntity::toDomain);
     }
+
+    @Override
+    public void deletar(Long id) {
+        Optional<User> userDeletado =  buscar(id);
+        userDeletado.ifPresent(user -> jpaRepo.deleteById(user.getId()));
+    }
+
 }

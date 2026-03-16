@@ -6,5 +6,7 @@ import java.util.Optional;
 
 public interface UserRepository {
     User salvar(User user);
-    Optional<User> buscar(String email);
+    Optional<User> buscar(Long id);
+
+    void deletar (Long id);
 }
