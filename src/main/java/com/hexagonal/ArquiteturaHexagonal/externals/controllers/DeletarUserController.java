@@ -16,7 +16,7 @@ public class DeletarUserController {
     }
 
     @DeleteMapping ("/deletar/{id}")
-    public ResponseEntity<String> createUser(@PathVariable Long id){
+    public ResponseEntity<String> deletaUser(@PathVariable Long id){
 
         String userFindDto =  deletaUserService.executar(id);
 

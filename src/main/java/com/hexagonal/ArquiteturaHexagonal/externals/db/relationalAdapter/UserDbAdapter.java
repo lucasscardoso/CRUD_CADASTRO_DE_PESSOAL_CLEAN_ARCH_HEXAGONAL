@@ -1,5 +1,6 @@
 package com.hexagonal.ArquiteturaHexagonal.externals.db.relationalAdapter;
 
+import com.hexagonal.ArquiteturaHexagonal.core.shared.exception.UserNotFoundException;
 import com.hexagonal.ArquiteturaHexagonal.core.user.User;
 import com.hexagonal.ArquiteturaHexagonal.core.user.repository.UserRepository;
 import com.hexagonal.ArquiteturaHexagonal.externals.db.repository.SpringDataUserRepository;
@@ -37,8 +38,22 @@ public class UserDbAdapter implements UserRepository {
 
     @Override
     public void deletar(Long id) {
-        Optional<User> userDeletado =  buscar(id);
-        userDeletado.ifPresent(user -> jpaRepo.deleteById(user.getId()));
+        Optional<UserEntity> userDeletado =  jpaRepo.findById(id);
+        userDeletado.ifPresent(user -> jpaRepo.deleteById(id));
+    }
+
+    @Override
+    public User alterarUsuario(Long id, User novoUser) {
+       return jpaRepo.findById(id).map(
+                userExist -> {
+                    userExist.setNome(novoUser.getNome());
+                    userExist.setEmail(novoUser.getEmail());
+
+                    UserEntity entitySave = jpaRepo.save(userExist);
+                    return entitySave.toDomain();
+                }
+        ).orElseThrow(() -> new UserNotFoundException("Usuário com ID " + id + " não encontrado"));
+
     }
 
 }
