@@ -1,4 +1,4 @@
-package com.hexagonal.ArquiteturaHexagonal.externals.auth;
+package com.hexagonal.ArquiteturaHexagonal.externals.auth.cryptografia;
 
 import com.hexagonal.ArquiteturaHexagonal.core.shared.passwordEncoder.PasswordEncoder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;

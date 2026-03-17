@@ -19,7 +19,6 @@ public class DeletarUserController {
     public ResponseEntity<String> deletaUser(@PathVariable Long id){
 
         String userFindDto =  deletaUserService.executar(id);
-
         return ResponseEntity.ok(userFindDto);
     }
 }
