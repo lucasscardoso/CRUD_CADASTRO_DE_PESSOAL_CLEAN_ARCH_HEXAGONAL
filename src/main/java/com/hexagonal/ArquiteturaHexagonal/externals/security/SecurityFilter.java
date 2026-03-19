@@ -1,4 +1,4 @@
-package com.hexagonal.ArquiteturaHexagonal.externals.auth.security;
+package com.hexagonal.ArquiteturaHexagonal.externals.security;
 
 import com.hexagonal.ArquiteturaHexagonal.externals.auth.jwt.TokenService;
 import com.hexagonal.ArquiteturaHexagonal.externals.db.repository.SpringDataUserRepository;

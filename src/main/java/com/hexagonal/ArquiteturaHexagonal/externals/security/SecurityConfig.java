@@ -1,4 +1,4 @@
-package com.hexagonal.ArquiteturaHexagonal.externals.auth.security;
+package com.hexagonal.ArquiteturaHexagonal.externals.security;
 
 
 import org.springframework.beans.factory.annotation.Autowired;

@@ -24,7 +24,7 @@ public class UserEntity implements UserDetails {
     private String nome;
 
     //alterar para unique
-    @Column(nullable = false)
+    @Column(nullable = false,unique = true)
     private String email;
 
     @Column(unique = true, nullable = false, length = 11)
