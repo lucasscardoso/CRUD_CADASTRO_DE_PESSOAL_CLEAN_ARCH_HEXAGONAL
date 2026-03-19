@@ -22,7 +22,7 @@ public class TokenService {
 
         return Jwts.builder()
                 .setIssuer("API Arquitetura Hexagonal")
-                .setSubject(usuarioLogado.getUsername())
+                .setSubject(usuarioLogado.getEmail())
                 .setIssuedAt(hoje)
                 .setExpiration(dataExpiracao)
                 .signWith(Keys.hmacShaKeyFor(secret.getBytes()), SignatureAlgorithm.HS256)

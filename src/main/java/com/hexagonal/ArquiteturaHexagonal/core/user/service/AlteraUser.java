@@ -1,6 +1,6 @@
 package com.hexagonal.ArquiteturaHexagonal.core.user.service;
 
-import com.hexagonal.ArquiteturaHexagonal.core.shared.AlteraUserRequest;
+import com.hexagonal.ArquiteturaHexagonal.core.shared.records.AlteraUserRequest;
 import com.hexagonal.ArquiteturaHexagonal.core.shared.exception.UserNotFoundException;
 import com.hexagonal.ArquiteturaHexagonal.core.shared.useCase.IUserCase;
 import com.hexagonal.ArquiteturaHexagonal.core.shared.userDto.AlteraUserDto;

@@ -1,4 +1,4 @@
-package com.hexagonal.ArquiteturaHexagonal.core.shared;
+package com.hexagonal.ArquiteturaHexagonal.core.shared.records;
 
 import com.hexagonal.ArquiteturaHexagonal.core.shared.userDto.AlteraUserDto;
 
