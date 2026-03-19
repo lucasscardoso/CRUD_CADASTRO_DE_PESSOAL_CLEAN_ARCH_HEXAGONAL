@@ -15,4 +15,6 @@ public interface IUser {
 
     String getSenha();
     void setSenha(String senha);
+
+    String getRole();
 }

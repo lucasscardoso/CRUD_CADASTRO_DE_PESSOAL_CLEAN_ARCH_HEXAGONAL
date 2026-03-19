@@ -24,6 +24,7 @@ public class BuscaUser implements IUserCase<Long, BuscaUserDto> {
         dto.setNome(usuario.getNome());
         dto.setEmail(usuario.getEmail());
         dto.setCpf(usuario.getCpf());
+        dto.setRole(usuario.getRole());
 
         return dto;
     }

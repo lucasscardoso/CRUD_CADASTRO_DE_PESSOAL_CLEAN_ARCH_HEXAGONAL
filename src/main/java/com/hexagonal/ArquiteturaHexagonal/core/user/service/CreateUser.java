@@ -33,6 +33,8 @@ public class CreateUser implements IUserCase<CreateUserDto, User> {
         String cryptoPassword = encode.encode(dto.getSenha());
         novoUser.setSenha(cryptoPassword);
 
+        novoUser.setRole(dto.getRole());
+
         return repo.salvar(novoUser);
     }
 

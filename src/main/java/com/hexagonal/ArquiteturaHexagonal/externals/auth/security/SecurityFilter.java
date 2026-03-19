@@ -29,17 +29,17 @@ public class SecurityFilter extends OncePerRequestFilter {
         var tokenJWT = recuperarToken(request);
 
         if (tokenJWT != null) {
-            var subject = tokenService.getSubject(tokenJWT);
-            System.out.println("-------------- LOG ------------" + subject);
 
-            var usuario = repository.findByEmail(subject)
-                    .orElseThrow(() -> new RuntimeException("Usuário não encontrado no banco após validar o token"));
-            System.out.println(subject);
 
-            var authentication = new UsernamePasswordAuthenticationToken(usuario, null, usuario.getAuthorities());
-            SecurityContextHolder.getContext().setAuthentication(authentication);
+                var subject = tokenService.getSubject(tokenJWT);
+                System.out.println("-------------- LOG ------------" + subject);
+                var usuario = repository.findByEmail(subject)
+                        .orElseThrow(() -> new RuntimeException("Usuário não encontrado no banco após validar o token"));
+                System.out.println(subject);
+                var authentication = new UsernamePasswordAuthenticationToken(usuario, null, usuario.getAuthorities());
+                SecurityContextHolder.getContext().setAuthentication(authentication);
+            }
 
-        }
         filterChain.doFilter(request, response);
 
     }

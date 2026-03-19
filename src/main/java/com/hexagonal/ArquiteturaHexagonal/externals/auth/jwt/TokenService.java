@@ -20,6 +20,7 @@ public class TokenService {
         Date hoje = new Date();
         Date dataExpiracao = new Date(hoje.getTime() + expiration);
 
+        assert usuarioLogado != null;
         return Jwts.builder()
                 .setIssuer("API Arquitetura Hexagonal")
                 .setSubject(usuarioLogado.getEmail())

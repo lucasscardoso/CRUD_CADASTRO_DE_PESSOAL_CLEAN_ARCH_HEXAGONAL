@@ -1,6 +1,7 @@
 package com.hexagonal.ArquiteturaHexagonal.externals.entity;
 
 
+import com.hexagonal.ArquiteturaHexagonal.core.user.USER_ROLE;
 import com.hexagonal.ArquiteturaHexagonal.core.user.User;
 import jakarta.persistence.*;
 import org.jspecify.annotations.Nullable;
@@ -22,6 +23,7 @@ public class UserEntity implements UserDetails {
     @Column(nullable = false)
     private String nome;
 
+    //alterar para unique
     @Column(nullable = false)
     private String email;
 
@@ -31,14 +33,20 @@ public class UserEntity implements UserDetails {
     @Column(nullable = false)
     private String senha;
 
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
+    private USER_ROLE role;
+
+
     public UserEntity(){}
 
-    public UserEntity(Long id, String nome, String email, String cpf, String senha) {
+    public UserEntity(Long id, String nome, String email, String cpf, String senha,USER_ROLE role) {
         this.id = id;
         this.nome = nome;
         this.email = email;
         this.cpf = cpf;
         this.senha = senha;
+        this.role = role;
     }
 
     public static UserEntity fromDomain(User user) {
@@ -48,6 +56,7 @@ public class UserEntity implements UserDetails {
         entity.setEmail(user.getEmail());
         entity.setCpf(user.getCpf());
         entity.setSenha(user.getSenha());
+        entity.setRole(user.getRole());
         return entity;
     }
 
@@ -58,12 +67,13 @@ public class UserEntity implements UserDetails {
         user.setEmail(this.email);
         user.setCpf(this.cpf);
         user.setSenha(this.senha);
+        user.setRole(this.role);
         return user;
     }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return List.of(new SimpleGrantedAuthority("ROLE_USER"));
+        return List.of(new SimpleGrantedAuthority("ROLE_" + this.role.name()));
     }
 
     @Override
@@ -132,4 +142,11 @@ public class UserEntity implements UserDetails {
         this.senha = senha;
     }
 
+    public USER_ROLE getRole() {
+        return role;
+    }
+
+    public void setRole(USER_ROLE role) {
+        this.role = role;
+    }
 }

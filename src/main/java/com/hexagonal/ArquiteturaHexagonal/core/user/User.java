@@ -11,6 +11,7 @@ public class User {
     private String cpf;
     private String email;
     private String senha;
+    private USER_ROLE role;
 
     public User(){}
 
@@ -53,5 +54,13 @@ public class User {
 
     public void setSenha(String senha) {
         this.senha = senha;
+    }
+
+    public USER_ROLE getRole() {
+        return role;
+    }
+
+    public void setRole(USER_ROLE role) {
+        this.role = role;
     }
 }

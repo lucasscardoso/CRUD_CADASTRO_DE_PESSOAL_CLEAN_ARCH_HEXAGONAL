@@ -1,6 +1,7 @@
 package com.hexagonal.ArquiteturaHexagonal.externals.db.relationalAdapter;
 
 import com.hexagonal.ArquiteturaHexagonal.core.shared.exception.UserNotFoundException;
+import com.hexagonal.ArquiteturaHexagonal.core.user.USER_ROLE;
 import com.hexagonal.ArquiteturaHexagonal.core.user.User;
 import com.hexagonal.ArquiteturaHexagonal.core.user.repository.UserRepository;
 import com.hexagonal.ArquiteturaHexagonal.externals.db.repository.SpringDataUserRepository;
@@ -8,6 +9,7 @@ import com.hexagonal.ArquiteturaHexagonal.externals.entity.UserEntity;
 
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
 import java.util.Optional;
 
 @Repository
@@ -26,6 +28,7 @@ public class UserDbAdapter implements UserRepository {
         entity.setEmail(user.getEmail());
         entity.setCpf(user.getCpf());
         entity.setSenha(user.getSenha());
+        entity.setRole(user.getRole());
 
          entity = jpaRepo.save(entity);
          return entity.toDomain();
@@ -54,6 +57,11 @@ public class UserDbAdapter implements UserRepository {
                 }
         ).orElseThrow(() -> new UserNotFoundException("Usuário com ID " + id + " não encontrado"));
 
+    }
+
+    @Override
+    public List<User> findAll() {
+        return jpaRepo.findAll().stream().map(UserEntity::toDomain).toList();
     }
 
 }

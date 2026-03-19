@@ -6,6 +6,7 @@ import com.hexagonal.ArquiteturaHexagonal.core.shared.userDto.CreateUserDto;
 import com.hexagonal.ArquiteturaHexagonal.core.user.User;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -19,6 +20,7 @@ public class BuscarUserController {
     }
 
     @GetMapping("/buscar/{id}")
+    @PreAuthorize("#id == authentication.principal.id or hasRole('ADMIN')")
     public ResponseEntity<BuscaUserDto> buscarUser(@PathVariable Long id){
 
         BuscaUserDto userFindDto =  buscaUserService.executar(id);
