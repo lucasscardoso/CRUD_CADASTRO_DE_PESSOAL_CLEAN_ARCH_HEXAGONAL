@@ -2,9 +2,6 @@ package com.hexagonal.ArquiteturaHexagonal.externals.controllers;
 
 import com.hexagonal.ArquiteturaHexagonal.core.shared.useCase.IUserCase;
 import com.hexagonal.ArquiteturaHexagonal.core.shared.userDto.BuscaUserDto;
-import com.hexagonal.ArquiteturaHexagonal.core.shared.userDto.CreateUserDto;
-import com.hexagonal.ArquiteturaHexagonal.core.user.User;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
@@ -26,4 +23,5 @@ public class BuscarUserController {
         BuscaUserDto userFindDto =  buscaUserService.executar(id);
         return ResponseEntity.ok(userFindDto);
     }
+
 }

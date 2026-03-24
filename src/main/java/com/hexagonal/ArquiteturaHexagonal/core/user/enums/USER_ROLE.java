@@ -1,4 +1,4 @@
-package com.hexagonal.ArquiteturaHexagonal.core.user;
+package com.hexagonal.ArquiteturaHexagonal.core.user.enums;
 
 public enum USER_ROLE {
 

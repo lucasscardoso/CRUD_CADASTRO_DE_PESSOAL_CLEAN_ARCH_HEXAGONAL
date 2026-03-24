@@ -1,6 +1,6 @@
 package com.hexagonal.ArquiteturaHexagonal.core.user.repository;
 
-import com.hexagonal.ArquiteturaHexagonal.core.user.User;
+import com.hexagonal.ArquiteturaHexagonal.core.user.entity.User;
 
 import java.util.List;
 import java.util.Optional;

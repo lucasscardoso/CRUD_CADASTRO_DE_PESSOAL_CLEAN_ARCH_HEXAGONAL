@@ -1,7 +1,6 @@
-package com.hexagonal.ArquiteturaHexagonal.core.user;
+package com.hexagonal.ArquiteturaHexagonal.core.user.entity;
 
-import com.hexagonal.ArquiteturaHexagonal.core.user.model.IUser;
-import jakarta.persistence.*;
+import com.hexagonal.ArquiteturaHexagonal.core.user.enums.USER_ROLE;
 
 
 public class User {

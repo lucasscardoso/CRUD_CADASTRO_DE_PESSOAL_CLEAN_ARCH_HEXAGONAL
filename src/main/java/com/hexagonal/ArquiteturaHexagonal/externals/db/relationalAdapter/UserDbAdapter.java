@@ -1,8 +1,7 @@
 package com.hexagonal.ArquiteturaHexagonal.externals.db.relationalAdapter;
 
 import com.hexagonal.ArquiteturaHexagonal.core.shared.exception.UserNotFoundException;
-import com.hexagonal.ArquiteturaHexagonal.core.user.USER_ROLE;
-import com.hexagonal.ArquiteturaHexagonal.core.user.User;
+import com.hexagonal.ArquiteturaHexagonal.core.user.entity.User;
 import com.hexagonal.ArquiteturaHexagonal.core.user.repository.UserRepository;
 import com.hexagonal.ArquiteturaHexagonal.externals.db.repository.SpringDataUserRepository;
 import com.hexagonal.ArquiteturaHexagonal.externals.entity.UserEntity;

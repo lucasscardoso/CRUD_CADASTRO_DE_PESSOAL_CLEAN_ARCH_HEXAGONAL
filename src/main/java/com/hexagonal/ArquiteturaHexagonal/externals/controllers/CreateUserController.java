@@ -2,7 +2,7 @@ package com.hexagonal.ArquiteturaHexagonal.externals.controllers;
 
 import com.hexagonal.ArquiteturaHexagonal.core.shared.useCase.IUserCase;
 import com.hexagonal.ArquiteturaHexagonal.core.shared.userDto.CreateUserDto;
-import com.hexagonal.ArquiteturaHexagonal.core.user.User;
+import com.hexagonal.ArquiteturaHexagonal.core.user.entity.User;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;

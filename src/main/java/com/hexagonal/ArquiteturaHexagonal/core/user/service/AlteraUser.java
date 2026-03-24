@@ -4,7 +4,7 @@ import com.hexagonal.ArquiteturaHexagonal.core.shared.records.AlteraUserRequest;
 import com.hexagonal.ArquiteturaHexagonal.core.shared.exception.UserNotFoundException;
 import com.hexagonal.ArquiteturaHexagonal.core.shared.useCase.IUserCase;
 import com.hexagonal.ArquiteturaHexagonal.core.shared.userDto.AlteraUserDto;
-import com.hexagonal.ArquiteturaHexagonal.core.user.User;
+import com.hexagonal.ArquiteturaHexagonal.core.user.entity.User;
 import com.hexagonal.ArquiteturaHexagonal.core.user.repository.UserRepository;
 import org.springframework.stereotype.Service;
 

@@ -1,10 +1,9 @@
 package com.hexagonal.ArquiteturaHexagonal.externals.entity;
 
 
-import com.hexagonal.ArquiteturaHexagonal.core.user.USER_ROLE;
-import com.hexagonal.ArquiteturaHexagonal.core.user.User;
+import com.hexagonal.ArquiteturaHexagonal.core.user.enums.USER_ROLE;
+import com.hexagonal.ArquiteturaHexagonal.core.user.entity.User;
 import jakarta.persistence.*;
-import org.jspecify.annotations.Nullable;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -36,6 +35,9 @@ public class UserEntity implements UserDetails {
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
     private USER_ROLE role;
+
+    @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<AdressEntity> enderecos;
 
 
     public UserEntity(){}
@@ -77,7 +79,7 @@ public class UserEntity implements UserDetails {
     }
 
     @Override
-    public @Nullable String getPassword() {
+    public  String getPassword() {
         return senha;
     }
 

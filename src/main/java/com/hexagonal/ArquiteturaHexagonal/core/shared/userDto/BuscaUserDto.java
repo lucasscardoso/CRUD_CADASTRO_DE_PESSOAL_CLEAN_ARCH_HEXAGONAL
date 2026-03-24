@@ -1,8 +1,8 @@
 package com.hexagonal.ArquiteturaHexagonal.core.shared.userDto;
 
 
-import com.hexagonal.ArquiteturaHexagonal.core.user.USER_ROLE;
-import com.hexagonal.ArquiteturaHexagonal.core.user.User;
+import com.hexagonal.ArquiteturaHexagonal.core.user.enums.USER_ROLE;
+import com.hexagonal.ArquiteturaHexagonal.core.user.entity.User;
 
 public class BuscaUserDto {
 

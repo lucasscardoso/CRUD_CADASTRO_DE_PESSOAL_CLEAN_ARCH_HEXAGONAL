@@ -3,7 +3,7 @@ package com.hexagonal.ArquiteturaHexagonal.core.user.service;
 import com.hexagonal.ArquiteturaHexagonal.core.shared.records.UserFilterDto;
 import com.hexagonal.ArquiteturaHexagonal.core.shared.useCase.IUserCase;
 import com.hexagonal.ArquiteturaHexagonal.core.shared.userDto.BuscaUserDto;
-import com.hexagonal.ArquiteturaHexagonal.core.user.User;
+import com.hexagonal.ArquiteturaHexagonal.core.user.entity.User;
 import com.hexagonal.ArquiteturaHexagonal.core.user.repository.UserRepository;
 import org.springframework.stereotype.Service;
 

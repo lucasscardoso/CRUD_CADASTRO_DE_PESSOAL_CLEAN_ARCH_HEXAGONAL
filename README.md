@@ -1,19 +1,21 @@
 # CRUD_CADASTRO_DE_PESSOAL_CLEAN_ARCH_HEXAGONAL
 
+### Esse CRUD foi desenvolvido utilizando conceitos de Clean Architecture onde explorei as melhores formas de aplicar esse pattern.
+
+
 ## Requisitos:
 - apache-maven-3.9.9 - [Download](https://maven.apache.org/download.cgi)
 - Java 17 - [Download](https://www.oracle.com/java/technologies/javase/jdk17-archive-downloads.html)
-- FrameWork - Spring Boot 4.0.3
+- FrameWork - Spring Boot 3.3.0
 - Docker Desktop (Rancher Desktop) - o banco foi configurado em um docker-compose. yml
 - Comandos basicos de docker - [Link](https://github.com/lucasscardoso/Docker)
 -  você pode alterar o application.properties para utilizar o banco de sua escolha,originalmente ele está configurado para utilizar o PostgreSql 18 em uma imagem baseada no Alpine Linux.
 
-### Esse CRUD foi desenvolvido utilizando conceitos de Clean Architecture onde explorei as melhores formas de aplicar esse pattern.
 
 ## Core
 
 - core/user/model: Interface de Usuario (regras de negócio puras).
-- core/user/service: Casos de Uso (AlterarUser, BuscaCompleta, BuscaUser, CreateUser, DeletaUser).
+- core/user/service: Casos de Uso (AlterarUser, BuscaCompleta, BuscaUser, CreateUser, DeletaUser,BuscaAdress).
 - core/user/repository: Interface de Repositorio (Regras para funcionamento do repository.).
 - core/shared: Tudo que é compartilhado no core,exceptions,PasswordEncoder(Interace para criptografia) , records,useCase(Interface para padronizar as services com entradas e saidas),userDto(dtos personalizados para as services).
 - core/user/User.java: Classe padrão com os atributos para a criação de um Usuario.
@@ -24,12 +26,12 @@
 - externals/auth/dto: Dto para passar somente o Token na resposta da autenticação.
 - externals/auth/jwt/TokenService.java: Criação e validação do token.
 - externals/auth/service: Possui implementacao da UserDetailsService,Essa classe é a ponte de comunicação entre o banco de dados e o Spring Security.
-- externals/controllers: AlterarUserController,AutenticacaoController,BuscarUserController,BuscarCompletaUserController,CreateUserController,DeletarUserController.
+- externals/controllers: AlterarUserController,AutenticacaoController,BuscarUserController,BuscarCompletaUserController,CreateUserController,DeletarUserController,BuscaCepController.
 - externals/db/relationalAdapter: possui a classe onde os metodos de persistencia funcionam, ela implementa a interface UserRepository do core.
 - externals/db/repository: Interface que implenta o JPA.
-- externals/entity: classe espelho da User.java do core, onde relacionamos a tabela, colunas.
+- externals/entity: classe espelho da User.java do core, onde relacionamos a tabela, colunas,classe para salvar os dados buscados pela api do ViaCep.
 - externals/security: possui a securityConfig,onde e são feitos os filtros e validações da aplicação, juntamente com o SecurityFilter onde extende OncePerRequestFilter, criando nossos metodos personalizados de validação.
-
+- externals/interfaces: possui a interface IViaCepClient, responsavel pela comunicação com a api viacep utilizando o FeignClient
 ### Esquema relacional da tabela:
 ### Caso você não queira utilizar via docker-compose,segue codigo para criação da tabela.
 <details>
