@@ -2,7 +2,6 @@ package com.hexagonal.ArquiteturaHexagonal.externals.controllers;
 
 import com.hexagonal.ArquiteturaHexagonal.core.shared.adressDto.ViaCepDTO;
 import com.hexagonal.ArquiteturaHexagonal.core.shared.useCase.IUserCase;
-import com.hexagonal.ArquiteturaHexagonal.core.shared.userDto.BuscaUserDto;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
