@@ -1,7 +1,6 @@
-package com.hexagonal.ArquiteturaHexagonal.externals.controllers;
+package com.hexagonal.ArquiteturaHexagonal.externals.controllers.userControllers;
 
 import com.hexagonal.ArquiteturaHexagonal.core.shared.useCase.IUserCase;
-import com.hexagonal.ArquiteturaHexagonal.core.shared.userDto.BuscaUserDto;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 

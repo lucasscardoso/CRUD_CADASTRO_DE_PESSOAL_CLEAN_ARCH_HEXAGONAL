@@ -30,6 +30,8 @@ public class SaveAdress implements IUserCase<EnderecoSaveResponseDTO, ViaCepDTO>
 
         end.setId(usuario.getId());
 
+        end.setUser(usuario);
+
         ViaCepDTO dto = new ViaCepDTO();
 
         dto.setLogradouro(end.getLogradouro());

@@ -1,4 +1,4 @@
-package com.hexagonal.ArquiteturaHexagonal.externals.controllers;
+package com.hexagonal.ArquiteturaHexagonal.externals.controllers.userControllers;
 
 
 import com.hexagonal.ArquiteturaHexagonal.core.shared.adressDto.ViaCepDTO;

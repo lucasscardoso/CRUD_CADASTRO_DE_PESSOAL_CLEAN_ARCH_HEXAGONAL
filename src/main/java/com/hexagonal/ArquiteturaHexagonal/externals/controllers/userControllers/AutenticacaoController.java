@@ -1,4 +1,4 @@
-package com.hexagonal.ArquiteturaHexagonal.externals.controllers;
+package com.hexagonal.ArquiteturaHexagonal.externals.controllers.userControllers;
 
 import com.hexagonal.ArquiteturaHexagonal.core.shared.userDto.LoginDto;
 import com.hexagonal.ArquiteturaHexagonal.externals.auth.dto.DadosTokenJWT;

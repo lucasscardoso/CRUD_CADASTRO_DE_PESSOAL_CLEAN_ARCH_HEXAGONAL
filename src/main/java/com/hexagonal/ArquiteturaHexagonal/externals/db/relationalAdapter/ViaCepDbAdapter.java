@@ -6,6 +6,8 @@ import com.hexagonal.ArquiteturaHexagonal.core.shared.exception.UserNotFoundExce
 import com.hexagonal.ArquiteturaHexagonal.core.user.entity.Endereco;
 import com.hexagonal.ArquiteturaHexagonal.core.user.entity.User;
 import com.hexagonal.ArquiteturaHexagonal.core.user.repository.AdressRepository;
+import com.hexagonal.ArquiteturaHexagonal.core.user.service.SaveAdress;
+import com.hexagonal.ArquiteturaHexagonal.externals.db.repository.SpringDataAddressRepository;
 import com.hexagonal.ArquiteturaHexagonal.externals.db.repository.SpringDataUserRepository;
 import com.hexagonal.ArquiteturaHexagonal.externals.entity.AdressEntity;
 import com.hexagonal.ArquiteturaHexagonal.externals.entity.UserEntity;
@@ -19,21 +21,28 @@ public class ViaCepDbAdapter implements AdressRepository {
 
     private final IViaCepClient viaCepClient;
     private final SpringDataUserRepository jpaRepo;
+    private final SpringDataAddressRepository adressRepo;
 
-    public ViaCepDbAdapter(IViaCepClient viaCepClient,SpringDataUserRepository jpaRepo) {
+
+    public ViaCepDbAdapter(IViaCepClient viaCepClient, SpringDataUserRepository jpaRepo, SpringDataAddressRepository adressRepo) {
         this.viaCepClient = viaCepClient;
         this.jpaRepo = jpaRepo;
+        this.adressRepo = adressRepo;
+
     }
 
     @Override
     public Endereco salvar(Endereco endereco) {
         AdressEntity entity = AdressEntity.fromDomain(endereco);
-        Optional<UserEntity> userEntity = jpaRepo.findById(endereco.getUser().getId()).orElseThrow(() -> new UserNotFoundException("usuario nao loxaliza"));
+
+        UserEntity userEntity = jpaRepo.findById(endereco.getUser().getId()).orElseThrow(() -> new UserNotFoundException("usuario nao localizado"));
 
         entity.setUsuario(userEntity);
+        entity.setId(userEntity.getId());
 
-        return null;
+        AdressEntity  saveAdress = adressRepo.save(entity);
 
+        return saveAdress.toDomain();
 
     }
 

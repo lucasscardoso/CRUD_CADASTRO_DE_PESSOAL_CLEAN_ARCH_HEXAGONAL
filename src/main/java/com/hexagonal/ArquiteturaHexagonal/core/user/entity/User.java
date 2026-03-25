@@ -1,6 +1,9 @@
 package com.hexagonal.ArquiteturaHexagonal.core.user.entity;
 
 import com.hexagonal.ArquiteturaHexagonal.core.user.enums.USER_ROLE;
+import com.hexagonal.ArquiteturaHexagonal.externals.entity.AdressEntity;
+
+import java.util.List;
 
 
 public class User {
@@ -10,9 +13,18 @@ public class User {
     private String cpf;
     private String email;
     private String senha;
+    private List<Endereco> enderecos;
     private USER_ROLE role;
 
     public User(){}
+
+    public List<Endereco> getEnderecos() {
+        return enderecos;
+    }
+
+    public void setEnderecos(List<Endereco> enderecos) {
+        this.enderecos = enderecos;
+    }
 
     public Long getId() {
         return id;

@@ -1,6 +1,7 @@
 package com.hexagonal.ArquiteturaHexagonal.externals.entity;
 
 
+import com.hexagonal.ArquiteturaHexagonal.core.user.entity.Endereco;
 import com.hexagonal.ArquiteturaHexagonal.core.user.enums.USER_ROLE;
 import com.hexagonal.ArquiteturaHexagonal.core.user.entity.User;
 import jakarta.persistence.*;
@@ -59,6 +60,12 @@ public class UserEntity implements UserDetails {
         entity.setCpf(user.getCpf());
         entity.setSenha(user.getSenha());
         entity.setRole(user.getRole());
+
+        if(user.getEnderecos() != null){
+            List<AdressEntity> adressEntities = user.getEnderecos().stream().map(AdressEntity::fromDomain).toList();
+            entity.setEnderecos(adressEntities);
+        }
+
         return entity;
     }
 
@@ -70,6 +77,11 @@ public class UserEntity implements UserDetails {
         user.setCpf(this.cpf);
         user.setSenha(this.senha);
         user.setRole(this.role);
+
+        if(this.enderecos != null){
+            List<Endereco> adressEntities = this.enderecos.stream().map(AdressEntity::toDomain).toList();
+            user.setEnderecos(adressEntities);
+        }
         return user;
     }
 
@@ -103,6 +115,13 @@ public class UserEntity implements UserDetails {
         return true;
     }
 
+    public List<AdressEntity> getEnderecos() {
+        return enderecos;
+    }
+
+    public void setEnderecos(List<AdressEntity> enderecos) {
+        this.enderecos = enderecos;
+    }
 
     public Long getId() {
         return id;
