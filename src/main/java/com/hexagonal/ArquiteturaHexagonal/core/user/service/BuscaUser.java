@@ -21,6 +21,7 @@ public class BuscaUser implements IUserCase<Long, BuscaUserDto> {
                 orElseThrow(() -> new UserNotFoundException(String.format("O email: %s " + ", não localizado em nossa base de dados",id)));
 
         BuscaUserDto dto = new BuscaUserDto();
+        dto.setId(usuario.getId());
         dto.setNome(usuario.getNome());
         dto.setEmail(usuario.getEmail());
         dto.setCpf(usuario.getCpf());

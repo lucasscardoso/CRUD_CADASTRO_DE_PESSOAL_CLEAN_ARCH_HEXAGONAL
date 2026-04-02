@@ -2,6 +2,7 @@ package com.hexagonal.ArquiteturaHexagonal.externals.security;
 
 import com.hexagonal.ArquiteturaHexagonal.externals.auth.jwt.TokenService;
 import com.hexagonal.ArquiteturaHexagonal.externals.db.repository.SpringDataUserRepository;
+import com.hexagonal.ArquiteturaHexagonal.externals.entity.UserEntity;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -26,18 +27,19 @@ public class SecurityFilter extends OncePerRequestFilter {
 
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
+        System.out.println("Filtro chamado para: " + request.getMethod() + " " + request.getRequestURI());
         var tokenJWT = recuperarToken(request);
 
         if (tokenJWT != null) {
-
-
                 var subject = tokenService.getSubject(tokenJWT);
                 System.out.println("-------------- LOG ------------" + subject);
                 var usuario = repository.findByEmail(subject)
                         .orElseThrow(() -> new RuntimeException("Usuário não encontrado no banco após validar o token"));
                 System.out.println(subject);
                 var authentication = new UsernamePasswordAuthenticationToken(usuario, null, usuario.getAuthorities());
+
                 SecurityContextHolder.getContext().setAuthentication(authentication);
+            System.out.println("DEBUG: Principal é instância de UserEntity? " + (authentication.getPrincipal() instanceof UserEntity));
             }
 
         filterChain.doFilter(request, response);

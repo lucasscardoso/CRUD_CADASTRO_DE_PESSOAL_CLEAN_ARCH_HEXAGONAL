@@ -6,6 +6,7 @@ import com.hexagonal.ArquiteturaHexagonal.core.user.entity.User;
 
 public class BuscaUserDto {
 
+    private Long id;
     private String nome;
     private String email;
     private String cpf;
@@ -13,12 +14,13 @@ public class BuscaUserDto {
 
 
     public BuscaUserDto(){}
-    public BuscaUserDto( String nome, String email, String cpf, USER_ROLE role) {
+    public BuscaUserDto( Long id, String nome, String email, String cpf, USER_ROLE role) {
 
         this.nome = nome;
         this.email = email;
         this.cpf = cpf;
         this.role = role;
+        this.id= id;
     }
 
     public String getNome() {
@@ -53,7 +55,15 @@ public class BuscaUserDto {
         this.role = role;
     }
 
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
     public static BuscaUserDto fromDomain(User user) {
-        return new BuscaUserDto(user.getNome(), user.getEmail(), user.getCpf(),user.getRole());
+        return new BuscaUserDto(user.getId(),user.getNome(), user.getEmail(), user.getCpf(),user.getRole());
     }
 }

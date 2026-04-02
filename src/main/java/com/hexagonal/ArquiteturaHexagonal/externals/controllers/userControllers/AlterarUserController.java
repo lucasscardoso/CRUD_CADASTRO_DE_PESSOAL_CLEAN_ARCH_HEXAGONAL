@@ -3,6 +3,7 @@ package com.hexagonal.ArquiteturaHexagonal.externals.controllers.userControllers
 import com.hexagonal.ArquiteturaHexagonal.core.shared.records.AlteraUserRequest;
 import com.hexagonal.ArquiteturaHexagonal.core.shared.userDto.AlteraUserDto;
 import com.hexagonal.ArquiteturaHexagonal.core.user.service.AlteraUser;
+import jakarta.transaction.Transactional;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;

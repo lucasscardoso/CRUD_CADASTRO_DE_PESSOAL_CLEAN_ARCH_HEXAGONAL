@@ -17,7 +17,7 @@ public class BuscarUserController {
     }
 
     @GetMapping("/buscar/{id}")
-    @PreAuthorize("#id == authentication.principal.id or hasRole('ADMIN')")
+    @PreAuthorize("hasRole('ADMIN') or @securityUtils.isOwner(#id)")
     public ResponseEntity<BuscaUserDto> buscarUser(@PathVariable Long id){
 
         BuscaUserDto userFindDto =  buscaUserService.executar(id);
